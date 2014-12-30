@@ -1,0 +1,45 @@
+<article>
+
+    <p data-ng-repeat="d in description">{{d}}</p>
+
+    <h4>Types of electronic cigarette heating element</h4>
+
+    <div class="table-responsive">
+        <table 
+            class="table table-hover table-condensed position-relative" 
+            summary="Types of electronic cigarettes">
+            <thead>
+                <tr>
+                    <th class="width30">Name and Description</th>
+                    <th>Image<br>(click to enlarge)</th>
+                    <th>Advantages</th>
+                    <th>Disadvantages</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="type in eCigTypes">
+                    <td>
+                        <b>{{type.name}}</b>
+                        <br>
+                        <br>
+                        {{type.description}}
+                    </td>
+                    <td class="image-hover" data-ng-click="openModal($event, type)">
+                        <img data-ng-src="{{type.image}}" alt="{{type.name}}" class="table-image"/>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-ng-repeat="pro in type.pros">{{pro}}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-ng-repeat="con in type.cons">{{con}}</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</article>

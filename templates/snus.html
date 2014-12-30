@@ -1,0 +1,28 @@
+<article>
+
+    <p data-ng-repeat="d in description">{{d}}</p>
+
+	<h4>Many types of smokeless tobacco</h4>
+
+	<div class="table-responsive">
+		<table class="table table-hover" summary="Types of smokeless tobacco">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Form</th>
+					<th>Application</th>
+					<th>Flavors</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="type in snusTypes">
+					<td>{{type.name}}</td>
+					<td>{{type.condition}}</td>
+					<td>{{type.application}}</td>
+					<td>{{type.flavors}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</article>

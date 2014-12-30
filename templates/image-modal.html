@@ -1,0 +1,7 @@
+<div>
+	<h4 class="center-block">{{currentType.name}}</h4>
+	<img data-ng-src="{{currentType.image}}" alt="{{currentType.name}}" class="img-responsive">
+	<ol class="list-group list-decimal">
+		<li data-ng-repeat="desc in eCigDescription" class="list-group-item">{{desc}}</li>
+	</ol>
+</div>
