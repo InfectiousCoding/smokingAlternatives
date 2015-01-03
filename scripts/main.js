@@ -85,7 +85,7 @@ angular
             });
         };
     })
-    .controller("SnusController", function SnusController ($scope, $location) {
+    .controller("SnusController", function SnusController ($scope, $location, $modal) {
         
         $scope.pageName = function() { return $location.path(); };
 
@@ -103,46 +103,63 @@ angular
                 "name"          : "Scandinavian snus",
                 "condition"     : "moist smokeless powder tobacco",
                 "application"   : "placed under upper (sometimes lower) lip for extended period of time",
-                "flavors"       : "mildly flavored. ex: smoke, bergamot, citrus, juniper berry, herbs, floral flavors"
+                "flavors"       : "mildly flavored. ex: smoke, bergamot, citrus, juniper berry, herbs, floral flavors",
+                "images"        : [{"source":"images/snus_swedish_portioned.jpg"}]
             },
             {
                 "name"          : "American snus",
                 "condition"     : "moist smokeless powder tobacco, lower pH level",
                 "application"   : "placed under upper (sometimes lower) lip for extended period of time",
-                "flavors"       : "often flavored. ex.: spearmint, wintergreen, vanilla, fruit (e.g. cherry)"
+                "flavors"       : "often flavored. ex.: spearmint, wintergreen, vanilla, fruit (e.g. cherry)",
+                "images"        : [{"source":"images/snus_american.jpg"}]
             },
             {
                 "name"          : "Nasal snuff",
                 "condition"     : "dry smokeless powder tobacco",
                 "application"   : "insufflation (\"sniffed\", but not deeply \"snorted\") through the nose",
-                "flavors"       : "often flavored. ex.: menthol or other scents"
+                "flavors"       : "often flavored. ex.: menthol or other scents",
+                "images"        : [{"source":"images/nasal_snuff.jpg"}, {"source":"images/nasal_snuff_accessories.jpg", "name": "Nasal snuff accessories (snuff bullets)"}]
             },
             {
                 "name"          : "Chewing tobacco",
                 "condition"     : "tobacco in the form of loose leaf and stem strands or chopped leaves and stems compressed into blocks (\"plugs\") or finely ground pieces compressed into pellets",
                 "application"   : "placed between cheek and gums or actively chewed",
-                "flavors"       : "sometimes flavored. ex.: wintergreen, apple, cherry"
+                "flavors"       : "sometimes flavored. ex.: wintergreen, apple, cherry",
+                "images"        : [{"source":"images/chewing_tobacco.jpg"},{"source":"images/spittoon.jpg", "name": "Spittoon (Mud jug)"}]
             },
             {
                 "name"          : "Dipping tobacco",
                 "condition"     : "moist smokeless finely ground (but less than snus) tobacco",
                 "application"   : "placed between the lower lip or cheek and the gums (it is not used nasally); salivation is copious and usually spat out",
-                "flavors"       : "usually flavored, although unflavored brands remain popular. ex.: wintergreen, mint"
+                "flavors"       : "usually flavored, although unflavored brands remain popular. ex.: wintergreen, mint",
+                "accessories"   : "Spittoon (mud jug)",
+                "images"        : [{"source":"images/dip_tobacco.jpg"},{"source":"images/spittoon.jpg", "name": "Spittoon (Mud jug)"}]
             },
             {
                 "name"          : "Makla",
                 "condition"     : "moist smokeless powder tobacco (very similar to Scandinavian snus, but more finely ground), higher nicotine content, higher pH level (~ above 10)",
                 "application"   : "placed under upper (sometimes lower) lip for extended period of time",
-                "flavors"       : "sometimes flavored. ex: menthol, coffee, chocolate-mint"
+                "flavors"       : "sometimes flavored. ex: menthol, coffee, chocolate-mint",
+                "images"        : [{"source":"images/makla.jpg"}]
                 // "brands"        : "Chema Makla, Makla Africaine (al Kantara, Platinum), Makla Ifrikia (Neffa), "
             },
             {
                 "name"          : "Naswār",
                 "condition"     : "moist smokeless powder tobacco, often green and sometimes caked with mineral lime and/or wood ash",
                 "application"   : "used like dipping tobacco (placed between lip or cheek and the gums), or put under the tongue",
-                "flavors"       : "usually heavily flavored. ex.: culinary oils (cardamom, sesame), the fruit, lime, menthol"
+                "flavors"       : "usually heavily flavored. ex.: culinary oils (cardamom, sesame), the fruit, lime, menthol",
+                "images"        : [{"source":"images/naswar2.jpg"}]
             }
         ];
+
+        $scope.openModal = function ($event, type) {
+            $scope.currentType = type;
+            $modal({
+                scope: $scope,
+                contentTemplate: 'templates/image-snus-multiple-modal.html',
+                show: true
+            });
+        };
 
     })
     .config(function($routeProvider, $locationProvider) {

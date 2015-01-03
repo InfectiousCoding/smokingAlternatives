@@ -72,3 +72,9 @@ ol.list-decimal li.list-group-item {
 .image-hover:hover {
     background-color: gray;
 }
+
+/* Images */
+.img-centered {
+    margin-left: auto;
+    margin-right: auto;
+}

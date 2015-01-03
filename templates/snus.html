@@ -12,6 +12,7 @@
 					<th>Form</th>
 					<th>Application</th>
 					<th>Flavors</th>
+                    <th>Images</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -20,6 +21,13 @@
 					<td>{{type.condition}}</td>
 					<td>{{type.application}}</td>
 					<td>{{type.flavors}}</td>
+                    <td>
+                        <div data-ng-show="type.images.length > 0">
+                            <div class="image-hover" data-ng-click="openModal($event, type)">
+                                <img data-ng-src="{{type.images[0].source}}" alt="{{type.name}}" class="table-image"/>
+                            </div>
+                        </div>
+                    </td>
 				</tr>
 			</tbody>
 		</table>
