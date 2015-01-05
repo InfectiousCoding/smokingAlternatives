@@ -1,0 +1,8 @@
+<div>
+    <h4 class="center-block">{{currentType.name}}</h4>
+    <div data-ng-repeat="image in currentType.images">
+        <h4 data-ng-if="image.name">{{image.name}}</h4>
+        <img data-ng-src="{{image.source}}" alt="{{image.name}}" class="img-responsive img-centered">
+        <br/>
+    </div>
+</div>

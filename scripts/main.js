@@ -24,6 +24,7 @@ angular
         ];
 
         $scope.description = [
+
             "Electronic cigarettes are one of latest inventions in the world of tobacco products. " +
             "The electronic cigarette delivers nicotine in the form of an aerosol (mist) instead of a smoke. " +
             "The aerosol (most people inaccurately refer to it as vapor) comes from the liquid (electronic liquid / electronic juice) " +
@@ -74,13 +75,38 @@ angular
             }
         ];
 
+        $scope.coilTypesDescription = [
+            "All electronic cigarettes can come with one or more heating elements (coils). " +
+            "Usually there is a single coil e-cigarettes and the dual coil e-cigarettes on the market. " +
+            "It comes down to the personal preference which one you should choose. ",
+
+            "Usually dual coil setup has same sized coils as a single setup, and so the battery drainage would highly increase. " +
+            "But the amount/density of vapor produced will generally be much higher than with the single coil setup. "
+        ];
+
+        $scope.coilTypes = [
+            {
+                name: "Single coil",
+                pros: ["Lower power consumption (usually e-cig is run at lower wattage) - saves battery power from ~ 10% to 30%", "Lower e-liquid consumption (saves on e-liquid)", "Easier to DIY (if you ever need to build it yourself)"],
+                cons: ["Lower amount/density of vapor", "Requires longer heating time (usually unnoticeable)"],
+                images: [{source:"images/single_coil.jpg"},{source:"images/single_coil_2.jpg",name:"Single Coil Characteristics"}]
+            },
+            {
+                name: "Dual coil",
+                pros: ["Higher amount/density of vapor", "Shorter time needed to deliver same amount of e-liquid"],
+                cons: ["Higher power consumption (depletes battery faster)", "Higher e-liquid consumption (more e-liquid gets vaporized since two coils heat up e-liquid)", "Harder to DIY (although easily available pre-built online)"],
+                images: [{source:"images/dual_coil.jpg"},{source:"images/dual_coil_2.jpg",name:"Dual Coil Characteristics"}]
+            }
+        ];
+
         $scope.pageName = function() { return $location.path(); };
 
-        $scope.openModal = function ($event, type) {
+        $scope.openModal = function ($event, type, templateType) {
+            var templateType = templateType == 'simple' ? 'templates/image-ecig-multiple-modal.html' : 'templates/image-modal.html';
             $scope.currentType = type;
             $modal({
                 scope: $scope,
-                contentTemplate: 'templates/image-modal.html',
+                contentTemplate: templateType,
                 show: true
             });
         };
@@ -104,7 +130,7 @@ angular
                 "condition"     : "moist smokeless powder tobacco",
                 "application"   : "placed under upper (sometimes lower) lip for extended period of time",
                 "flavors"       : "mildly flavored. ex: smoke, bergamot, citrus, juniper berry, herbs, floral flavors",
-                "images"        : [{"source":"images/snus_swedish_portioned.jpg"}]
+                "images"        : [{"source":"images/snus_swedish_portioned.jpg", "name": "Portioned scandinavian snus (General brand)"}]
             },
             {
                 "name"          : "American snus",
@@ -162,6 +188,27 @@ angular
         };
 
     })
+    .controller("QuitController", function QuitController ($scope, $location, $modal) {
+
+        $scope.pageName = function() { return $location.path(); };
+
+        $scope.description = [
+            "Of course no one can guarantee the total safety of tobacco alternatives. " +
+            "There will always be an ongoing controversy regarding the safety of any given nicotine-containing product. " +
+            "And the best alternative to smoking is of course to get rid of nicotine dependency. ",
+
+            "No one can deny that quitting smoking is hard. After all nicotine, as many other drugs, is a highly addictive substance. " +
+            "But no one can say that it is impossible. Countless number of people have quit smoking before. ",
+
+            "Many books and methods that help quitting smoking exist. " +
+            "One of the most famous is the Allen Carr's \"The Easy Way to Stop Smoking\". " +
+            "Allen Carr's method is known to be very successful and claims to help many famous people quit smoking, " +
+            "including Anthony Hopkins, Ashton Kutcher, Pink, Richard Branson, Ellen DeGeneres, Jason Mraz, Charlotte Church and others.",
+
+            ""
+        ];
+
+    })
     .config(function($routeProvider, $locationProvider) {
         $routeProvider
             .when("/", {
@@ -178,7 +225,7 @@ angular
             })
             .when('/quit', {
                 templateUrl: 'templates/quit.html',
-                controller: 'MainController'
+                controller: 'QuitController'
             })
             ;
 

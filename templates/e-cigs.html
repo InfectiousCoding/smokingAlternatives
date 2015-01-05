@@ -2,7 +2,7 @@
 
     <p data-ng-repeat="d in description">{{d}}</p>
 
-    <h4>Types of electronic cigarette heating element</h4>
+    <h4>Types of electronic cigarette (by heating element)</h4>
 
     <div class="table-responsive">
         <table 
@@ -26,6 +26,42 @@
                     </td>
                     <td class="image-hover" data-ng-click="openModal($event, type)">
                         <img data-ng-src="{{type.image}}" alt="{{type.name}}" class="table-image"/>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-ng-repeat="pro in type.pros">{{pro}}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="list-group">
+                            <li class="list-group-item" data-ng-repeat="con in type.cons">{{con}}</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>Different coil characteristics</h4>
+
+    <p data-ng-repeat="d in coilTypeDescription">{{d}}</p>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed position-relative"
+                summary="Different coil characteristics">
+            <thead>
+                <tr>
+                    <th class="width30">Name</th>
+                    <th>Image</th>
+                    <th>Advantages</th>
+                    <th>Disadvantages</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="type in coilTypes">
+                    <td>{{type.name}}</td>
+                    <td class="image-hover" data-ng-click="openModal($event, type, 'simple')">
+                        <img data-ng-src="{{type.images[0].source}}" alt="{{type.name}}" class="table-image"/>
                     </td>
                     <td>
                         <ul class="list-group">
