@@ -4,6 +4,11 @@ angular
         'mgcrea.ngStrap',
         'ngRoute'
     ])
+    .filter('to_trusted', ['$sce', function ($sce) {
+        return function(text) {
+            return $sce.trustAsHtml(text);
+        };
+    }])
     .controller('MainController', function ($scope, $location, $modal) {
         $scope.pageName = function() { return $location.path(); };
     })
@@ -25,15 +30,49 @@ angular
 
         $scope.description = [
 
-            "Electronic cigarettes are one of latest inventions in the world of tobacco products. " +
-            "The electronic cigarette delivers nicotine in the form of an aerosol (mist) instead of a smoke. " +
+            "Electronic cigarettes are one of latest inventions in the world of tobacco. " +
+            "The electronic cigarette delivers nicotine in the form of an " +
+                "aerosol (mist) from e-liquid (nicotine, propylene glycol and vegetable glycerin) " +
+                "instead of a smoke that comes from burning a tobacco and paper. " +
             "The aerosol (most people inaccurately refer to it as vapor) comes from the liquid (electronic liquid / electronic juice) " +
-            "that gets heated up by heating of the coil inside of a device.",
+            "that gets heated up by heating of the coil inside of a device, and becomes aerosol."
+            ,
 
-            "Although the first patent for a smokeless, non-tobacco cigarette was made as early as 1963, " +
+            "Because e-cigarettes are so new to the market, there is still a lot of debate on safety of using it. " +
+            "There have been a very few papers published on topic of health effects of electronic cigarettes. " +
+            "The issue becomes even more controversial when media misinterprets results of studies, " +
+                "and not without help from huge tobacco companies who lose their market share due to people switching over to e-cigarettes. " +
+            "On top of that local and federal government puts bans and restrictions on vaping, " +
+                "not without help of lobbying against it, done by the same tobacco companies mentioned above. " +
+            "However, in general, the papers do get published, and a lot of them suggest that e-cigarettes are less dangerous than smoking [<a href='#ref1'>1</a>]."
+            ,
+
+            "Little History side-note. " +
+            "Although the first patent for a smokeless, non-tobacco cigarette was made as early as 1963 [<a href='#ref2'>2</a>] [<a href='#ref3'>3</a>], " +
             "electronic cigarettes were not commercialized until 2003, when a Chinese pharmacist " +
-            "Hon Lik first invented and then patented the modern day e-cigarette."
+            "Hon Lik first invented and then patented the modern day e-cigarette [<a href='#ref3'>3</a>]."
         ];
+
+        $scope.choosingDescription = "E-cigarettes come in three main forms: atomizer, cartomizer, and clearomizer. " +
+            "Choosing which one is right is highly subjective, but I recommend going with the latter, " +
+                "because for me it is easiest to use, can store more e-liquid and is easy to maintain. " +
+            "Below is a comparison table for each of those types of e-cigarettes.";
+
+        $scope.references = [
+            {
+                name: "E-cigarette research, study, and papers",
+                link: "http://www.ecigalternative.com/ecigarette-studies-research.htm"
+            },
+            {
+                name: "History of Electronic Cigarettes (ECigaretteDirect)",
+                link: "http://www.ecigarettedirect.co.uk/ashtray-blog/2012/05/history-electronic-cigarette.html"
+            },
+            {
+                name: "History of Electronic Cigarettes (Wikipedia)",
+                link: "http://en.wikipedia.org/wiki/Electronic_cigarette#History"
+            }
+        ];
+
 
         $scope.eCigTypes = [
             {
@@ -81,7 +120,7 @@ angular
             "It comes down to the personal preference which one you should choose. ",
 
             "Usually dual coil setup has same sized coils as a single setup, and so the battery drainage would highly increase. " +
-            "But the amount/density of vapor produced will generally be much higher than with the single coil setup. "
+            "But the amount/density of vapor produced will generally be higher than with the single coil setup. "
         ];
 
         $scope.coilTypes = [
@@ -121,7 +160,7 @@ angular
             "Unlike it's predecessors like snuff or dipping tobacco it does not require spitting. " +
             "On top of that it is believed to be safer than snuff or dipping. " +
             "Snus takes origin in 19th century Sweden when Swedish producers started manufacturing moist snuff that later became known as snus. " +
-            "Moreover snus can be safely used in a lot of environments where smoking is prohibited, such as airplanes. "
+            "Moreover snus can be safely used in a lot of places where smoking is prohibited, such as airplanes."
         ];
 
         $scope.snusTypes = [

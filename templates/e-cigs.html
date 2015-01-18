@@ -1,6 +1,11 @@
 <article>
 
-    <p data-ng-repeat="d in description">{{d}}</p>
+    <p data-ng-repeat="d in description" data-ng-bind-html="d | to_trusted"></p>
+
+
+    <h3>Choosing e-cigarette</h3>
+
+    <p data-ng-bind="choosingDescription"></p>
 
     <h4>Types of electronic cigarette (by heating element)</h4>
 
@@ -44,7 +49,7 @@
 
     <h4>Different coil characteristics</h4>
 
-    <p data-ng-repeat="d in coilTypeDescription">{{d}}</p>
+    <p data-ng-repeat="d in coilTypesDescription">{{d}}</p>
 
     <div class="table-responsive">
         <table class="table table-hover table-condensed position-relative"
@@ -77,5 +82,15 @@
             </tbody>
         </table>
     </div>
+
+    <div class="references">
+        <h4>References</h4>
+        <hr/>
+        <div data-ng-repeat="(key, ref) in references">
+            {{ key+1 }}: <a href="{{ref.link}}" id="ref{{key+1}}" target="_blank">{{ref.name}}</a>
+        </div>
+    </div>
+
+    <br/>
 
 </article>
